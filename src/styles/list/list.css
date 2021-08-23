@@ -1,0 +1,154 @@
+.lists-div {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  min-width: -webkit-fit-content;
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+  border-radius: 2mm;
+}
+
+.list {
+  --listFont: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif, Courier,
+        monospace;
+  width: 300px;
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+  background: #dbdde2;
+  padding: 0px 7px 10px 7px;
+  border-radius: 1.5mm;
+  margin: 7px;
+}
+
+.list .list-header {
+  font-weight: 500;
+  font-family: var(--listFont);
+  padding-left: 0.5rem;
+  margin: 12px 0 12px 0;
+}
+
+.list .list-cards .list-card {
+  display: -ms-grid;
+  display: grid;
+  grid-auto-flow: column;
+  -ms-grid-row-align: center;
+      align-self: center;
+  background: #ffffff;
+  margin-bottom: 0.5rem;
+  padding: 0.6rem;
+  border-radius: 1mm;
+  font-family: var(--listFont);
+  height: -webkit-fit-content;
+  height: -moz-fit-content;
+  height: fit-content;
+}
+
+.list .list-cards .list-card .card-title {
+  float: inline-start;
+  font-size: 1rem;
+  border: none;
+  outline: none;
+  width: -webkit-fit-content;
+  width: -moz-fit-content;
+  width: fit-content;
+}
+
+.list .list-cards .list-card .card-title:disabled {
+  background: none;
+}
+
+.list .list-cards .list-card .settings-div {
+  display: -ms-grid;
+  display: grid;
+  grid-auto-flow: column;
+  -ms-grid-row-align: center;
+      align-self: center;
+}
+
+.list .list-cards .list-card .settings-div .delete-card-button {
+  float: right;
+  font-weight: 600;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.list .list-cards .list-card .settings-div .delete-card-button:hover {
+  cursor: pointer;
+  -webkit-transform: scale(1.3);
+          transform: scale(1.3);
+  color: red;
+}
+
+.list .list-cards .list-card .settings-div .move-card-button {
+  border: none;
+  outline: none;
+  width: 1.3rem;
+  font-size: 0px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("../../assets/moveIcon.svg");
+  background-repeat: no-repeat;
+  background-position-x: 100%;
+  background-size: contain;
+  margin-right: 0.7rem;
+  float: right;
+  font-weight: 600;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.list .list-cards .list-card .settings-div .move-card-button:hover {
+  cursor: pointer;
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+}
+
+.list .list-cards .list-card .settings-div .move-card-button .move-icon {
+  height: 1.3rem;
+  width: 1.3rem;
+}
+
+.list .list-cards .list-card .settings-div .move-card-button .move-option {
+  font-size: 15px;
+  padding: .2rem;
+  margin: .2rem;
+}
+
+.list .list-cards .list-card .settings-div .edit-card-button {
+  margin-right: 0.8rem;
+  float: right;
+  font-weight: 600;
+  -webkit-transition: 0.3s;
+  transition: 0.3s;
+}
+
+.list .list-cards .list-card .settings-div .edit-card-button:hover {
+  cursor: pointer;
+  -webkit-transform: scale(1.2);
+          transform: scale(1.2);
+}
+
+.list .list-cards .list-card .settings-div .edit-card-button .edit-icon {
+  height: 1.3rem;
+  width: 1.3rem;
+}
+
+.list .add-card {
+  display: inline;
+  color: #535c6b;
+  font-family: var(--listFont);
+  margin: 15px 0 15px 0px;
+  padding-left: 0.5rem;
+}
+
+.list .add-card:hover {
+  cursor: pointer;
+}
+/*# sourceMappingURL=list.css.map */

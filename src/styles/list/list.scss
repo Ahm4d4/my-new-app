@@ -1,0 +1,153 @@
+.lists-div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-width: fit-content;
+    // background: #000000;
+    border-radius: 2mm;
+}
+.list {
+    --listFont: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande", "Lucida Sans", Arial, sans-serif, Courier,
+        monospace;
+
+    width: 300px;
+    height: fit-content;
+    background: #dbdde2;
+    padding: 0px 7px 10px 7px;
+    border-radius: 1.5mm;
+    margin: 7px;
+
+    .list-header {
+        font-weight: 500;
+        font-family: var(--listFont);
+        padding-left: 0.5rem;
+        margin: 12px 0 12px 0;
+        // background: #dbb792;
+    }
+
+    .list-cards {
+        .list-card {
+            display: grid;
+            grid-auto-flow: column;
+            align-self: center;
+            // font-size: 15px;
+            background: #ffffff;
+            margin-bottom: 0.5rem;
+            padding: 0.6rem;
+            border-radius: 1mm;
+            font-family: var(--listFont);
+            height: fit-content;
+            .card-title {
+                float: inline-start;
+                font-size: 1rem;
+                border: none;
+                outline: none;
+                width: fit-content;
+                &:disabled {
+                    background: none;
+                }
+            }
+            .settings-div {
+                display: grid;
+                grid-auto-flow: column;
+                align-self: center;
+
+                .delete-card-button {
+                    float: right;
+                    font-weight: 600;
+                    transition: 0.3s;
+                    &:hover {
+                        cursor: pointer;
+                        transform: scale(1.3);
+                        color: red;
+                    }
+                }
+                .move-card-button {
+                    border: none;
+                    outline: none;
+                    width: 1.3rem;
+
+                    font-size: 0px;
+
+                    -webkit-appearance: none;
+                    -moz-appearance: none;
+                    background-image: url("../../assets/moveIcon.svg");
+                    background-repeat: no-repeat;
+                    background-position-x: 100%;
+                    background-size: contain;
+                    margin-right: 0.7rem;
+                    float: right;
+                    font-weight: 600;
+                    transition: 0.3s;
+                    &:hover {
+                        cursor: pointer;
+                        transform: scale(1.2);
+                    }
+                    .move-icon {
+                        height: 1.3rem;
+                        width: 1.3rem;
+                    }
+                    .move-option {
+                        font-size: 15px;
+                        padding: .2rem;
+                        margin: .2rem;
+                    }
+                }
+                .edit-card-button {
+                    margin-right: 0.8rem;
+                    float: right;
+                    font-weight: 600;
+                    transition: 0.3s;
+                    &:hover {
+                        cursor: pointer;
+                        transform: scale(1.2);
+                    }
+                    .edit-icon {
+                        height: 1.3rem;
+                        width: 1.3rem;
+                    }
+                }
+            }
+        }
+    }
+    .add-card {
+        display: inline;
+        color: #535c6b;
+        font-family: var(--listFont);
+        margin: 15px 0 15px 0px;
+        padding-left: 0.5rem;
+        &:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+// .add-list-button-wrapper {
+//     background: #a7a9af;
+//     margin: 10px;
+//     width: 300px;
+//     height: fit-content;
+//     display: grid;
+//     justify-content: center;
+//     align-items: center;
+
+//     .add-list-btn {
+//         font-family: var(--listFont);
+//         --color: rgb(141, 141, 182);
+//         border: none;
+//         border-radius: 1mm;
+//         width: 150px;
+//         display: flex;
+//         padding: 0.6rem;
+//         &:hover {
+//         }
+
+//     }
+//     .title-box {
+//         visibility: hidden;
+//         position: absolute;
+//         .add-list-title {
+//             width: 150px;
+//         }
+//     }
+// }
