@@ -2,23 +2,77 @@ import React, { useState } from "react";
 import AddCard from "./add-card";
 import ListCard from "./list-card";
 import ListHeader from "./list-header";
-import { list, listCard } from "../../../interfaces/interfaces";
+import { list, listCard, listIF } from "../../../interfaces/interfaces";
 
-export default function List({ listHeader, listCards }: list) {
+export default function List({
+  listHeader,
+  listCards,
+  listKey,
+  setLists,
+  lists,
+}: listIF) {
+  console.log("list.ts rendered");
   const [cards, setCards] = useState(listCards);
 
   const addCard = (newCard: listCard) => {
-    setCards([...cards, { cardInfo: "NewCard", cardKey: cards.length }]);
+    setCards([...cards, { cardInfo: "NewCard" }]);
+
+    // const updatedList: list = {
+    //   listCards: cards,
+    //   listHeader: listHeader,
+    // };
+    // setLists(() =>
+    //   lists.map((list, index) => {
+    //     if (index !== listKey) return list;
+    //     else return updatedList;
+    //   })
+    // );
   };
+  const editCard = (cardTitle: string, cardIndex: number) => {
+    const updatedCard: listCard = { cardInfo: cardTitle };
 
+    setCards(() =>
+      cards.map((card: listCard, index: number) => {
+        if (index !== cardIndex) return card;
+        else return updatedCard;
+      })
+    );
+    // const updatedList: list = {
+    //   listCards: cards,
+    //   listHeader: listHeader,
+    // };
+
+    // setLists(() =>
+    //   lists.map((list, index) => {
+    //     if (index !== listKey) return list;
+    //     else return updatedList;
+    //   })
+    // );
+  };
   const deleteCard = (deletedCard: number) => {
+    console.log(cards);
+    setCards(() =>
+      cards.filter((card: listCard, index: number) => index !== deletedCard)
+    );
+    // console.log(cards[deletedCard], cards);
+    // setCards(() =>
+    //   cards.map((card: listCard, index: number) => {
+    //     if (index !== deletedCard) return card;
+    //     else return card;
+    //   })
+    // );
+    // setCards(tempCards);
 
-    console.log("deleted card", deletedCard, cards);
-    const tempCards = cards.filter(
-      (card: listCard, index: number) => index !== deletedCard);
-    setCards(tempCards);
-    console.log("deleted card", deletedCard, cards, tempCards);
-
+    // const updatedList: list = {
+    //   listCards: cards,
+    //   listHeader: listHeader,
+    // };
+    // setLists(() =>
+    //   lists.map((list, index) => {
+    //     if (index !== listKey) return list;
+    //     else return updatedList;
+    //   })
+    // );
   };
 
   return (
@@ -31,6 +85,7 @@ export default function List({ listHeader, listCards }: list) {
             key={index}
             cardKey={index}
             cardInfo={card.cardInfo}
+            editCard={editCard}
             // lists={lists.filter((list: string) => list != listHeader)}
           />
         ))}

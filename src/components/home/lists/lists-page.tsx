@@ -5,10 +5,10 @@ import {list} from "../../../interfaces/interfaces"
 
 export default function ListsPage() {
     let ToDo:list = {listHeader: "To Do", listCards: []};
-    let Doing:list = {listHeader: "Doing", listCards: []};
-    let Done:list = {listHeader: "Done", listCards: []};
+    // let Doing:list = {listHeader: "Doing", listCards: []};
+    // let Done:list = {listHeader: "Done", listCards: []};
 
-    const [lists, setLists] = useState<list[]>([ToDo, Doing, Done]);
+    const [lists, setLists] = useState<list[]>([ToDo]);
 
     return (
         <div className="lists-div">
@@ -17,6 +17,9 @@ export default function ListsPage() {
                 key={index}
                 listHeader={list.listHeader}
                 listCards={list.listCards}
+                listKey={index}
+                setLists={setLists}
+                lists={lists}
                 />
                 
                 

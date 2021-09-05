@@ -2,9 +2,14 @@ import React, { useEffect, useRef, useState } from "react";
 import Swal from "sweetalert2";
 import moveIcon from "../../../assets/moveIcon.svg";
 import editIcon from "../../../assets/editIcon.svg";
-import { listCard } from "../../../interfaces/interfaces";
+import { listCard, listCardIF } from "../../../interfaces/interfaces";
 
-export default function ListCard({ cardInfo, cardKey, deleteCard }: any) {
+export default function ListCard({
+  cardInfo,
+  cardKey,
+  deleteCard,
+  editCard,
+}: listCardIF) {
   const [cardTitle, setCardTitle] = useState(cardInfo);
   const titleRef = useRef<HTMLInputElement>(null);
   const handleDeleteCard = () => {
@@ -23,11 +28,16 @@ export default function ListCard({ cardInfo, cardKey, deleteCard }: any) {
       }
     });
   };
-  const handleMoveCard = () => {};
-  const handleEditCard = () => {
+  // const handleMoveCard = () => {};
+  const enableEditCard = () => {
     titleRef.current!.disabled = false;
     titleRef.current!.focus();
   };
+
+  // const handleEditCard = () => {
+  //   console.log(" kk");
+  //   editCard(cardTitle, cardKey);
+  // };
   useEffect(() => {
     titleRef.current!.disabled = true;
   }, []);
@@ -41,10 +51,13 @@ export default function ListCard({ cardInfo, cardKey, deleteCard }: any) {
         autoComplete="off"
         value={cardTitle}
         onChange={(e) => setCardTitle(e.target.value)}
-        onBlur={() => (titleRef.current!.disabled = true)}
+        onBlur={() => {
+          titleRef.current!.disabled = true;
+          editCard(cardTitle, cardKey);
+        }}
       ></input>
       <div className="settings-div">
-        <span className="edit-card-button" onClick={handleEditCard}>
+        <span className="edit-card-button" onClick={enableEditCard}>
           <img className="edit-icon" src={editIcon}></img>
         </span>
         <select className="move-card-button">
