@@ -8,72 +8,38 @@ export default function List({
   listHeader,
   listCards,
   listKey,
-  setLists,
-  lists,
+  updateLists
 }: listIF) {
-  console.log("list.ts rendered");
   const [cards, setCards] = useState(listCards);
+  const [forceUpate, setForceUpdate] = useState<boolean>(false);
 
   const addCard = (newCard: listCard) => {
     setCards([...cards, { cardInfo: "NewCard" }]);
 
-    // const updatedList: list = {
-    //   listCards: cards,
-    //   listHeader: listHeader,
-    // };
-    // setLists(() =>
-    //   lists.map((list, index) => {
-    //     if (index !== listKey) return list;
-    //     else return updatedList;
-    //   })
-    // );
+    updateLists1();
   };
-  const editCard = (cardTitle: string, cardIndex: number) => {
-    const updatedCard: listCard = { cardInfo: cardTitle };
 
-    setCards(() =>
-      cards.map((card: listCard, index: number) => {
-        if (index !== cardIndex) return card;
-        else return updatedCard;
-      })
-    );
-    // const updatedList: list = {
-    //   listCards: cards,
-    //   listHeader: listHeader,
-    // };
+  const updateLists1 = () => {
+    const updatedList: list = {
+      listCards: cards,
+      listHeader: listHeader,
+    };    
+    updateLists(updatedList, listKey);
+  }
 
-    // setLists(() =>
-    //   lists.map((list, index) => {
-    //     if (index !== listKey) return list;
-    //     else return updatedList;
-    //   })
-    // );
+  const edifCardFunction = (cardKey: number, newCardInfo:string) => {
+    cards[cardKey].cardInfo = newCardInfo;
+    setForceUpdate(!forceUpate);
+    updateLists1();
   };
+
   const deleteCard = (deletedCard: number) => {
-    console.log(cards);
-    setCards(() =>
-      cards.filter((card: listCard, index: number) => index !== deletedCard)
-    );
-    // console.log(cards[deletedCard], cards);
-    // setCards(() =>
-    //   cards.map((card: listCard, index: number) => {
-    //     if (index !== deletedCard) return card;
-    //     else return card;
-    //   })
-    // );
-    // setCards(tempCards);
-
-    // const updatedList: list = {
-    //   listCards: cards,
-    //   listHeader: listHeader,
-    // };
-    // setLists(() =>
-    //   lists.map((list, index) => {
-    //     if (index !== listKey) return list;
-    //     else return updatedList;
-    //   })
-    // );
+    const tempCards = cards.filter(
+      (card: listCard, index: number) => index !== deletedCard);
+    setCards(tempCards);
+    updateLists1();
   };
+    
 
   return (
     <div className="list">
@@ -85,7 +51,7 @@ export default function List({
             key={index}
             cardKey={index}
             cardInfo={card.cardInfo}
-            editCard={editCard}
+            edifCardFunction={edifCardFunction}
             // lists={lists.filter((list: string) => list != listHeader)}
           />
         ))}

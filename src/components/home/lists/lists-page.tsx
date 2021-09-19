@@ -10,6 +10,10 @@ export default function ListsPage() {
 
     const [lists, setLists] = useState<list[]>([ToDo]);
 
+    const updateLists = (updatedList: list, listKey: number) =>{
+        lists[listKey] = updatedList;
+        console.log(lists);
+    }
     return (
         <div className="lists-div">
             {lists.map((list: list, index: number)=> (
@@ -18,17 +22,9 @@ export default function ListsPage() {
                 listHeader={list.listHeader}
                 listCards={list.listCards}
                 listKey={index}
-                setLists={setLists}
-                lists={lists}
-                />
-                
-                
-            ))}
-           
-
-
-
-            
+                updateLists={updateLists}
+                />               
+            ))}         
         </div>
     )
 }

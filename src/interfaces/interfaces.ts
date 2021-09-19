@@ -1,3 +1,5 @@
+import { AnyMxRecord } from "dns";
+
 export type listCard = {
     cardInfo: string;
     // cardKey: number;
@@ -12,12 +14,13 @@ export interface listIF {
     listCards: listCard[];
     listHeader: string;
     listKey: number;
-    lists: list[];
-    setLists: any;
+    // lists: list[];
+    // setLists: any;
+    updateLists: any;
 }
 export interface listCardIF {
     cardInfo: string;
     cardKey: number;
     deleteCard: any;
-    editCard: any;
+    edifCardFunction: any;
 }

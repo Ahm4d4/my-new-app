@@ -8,9 +8,8 @@ export default function ListCard({
   cardInfo,
   cardKey,
   deleteCard,
-  editCard,
+  edifCardFunction,
 }: listCardIF) {
-  const [cardTitle, setCardTitle] = useState(cardInfo);
   const titleRef = useRef<HTMLInputElement>(null);
   const handleDeleteCard = () => {
     Swal.fire({
@@ -24,7 +23,7 @@ export default function ListCard({
     }).then((result) => {
       if (result.isConfirmed) {
         deleteCard(cardKey);
-        Swal.fire("Deleted!", "Your card has been deleted.", "success");
+        // Swal.fire("Deleted!", "Your card has been deleted.", "success");
       }
     });
   };
@@ -34,10 +33,6 @@ export default function ListCard({
     titleRef.current!.focus();
   };
 
-  // const handleEditCard = () => {
-  //   console.log(" kk");
-  //   editCard(cardTitle, cardKey);
-  // };
   useEffect(() => {
     titleRef.current!.disabled = true;
   }, []);
@@ -49,12 +44,9 @@ export default function ListCard({
         id="card-title"
         className="card-title"
         autoComplete="off"
-        value={cardTitle}
-        onChange={(e) => setCardTitle(e.target.value)}
-        onBlur={() => {
-          titleRef.current!.disabled = true;
-          editCard(cardTitle, cardKey);
-        }}
+        value={cardInfo}
+        onChange={(e) => edifCardFunction(cardKey, e.target.value)}
+        onBlur={() => (titleRef.current!.disabled = true)}
       ></input>
       <div className="settings-div">
         <span className="edit-card-button" onClick={enableEditCard}>
